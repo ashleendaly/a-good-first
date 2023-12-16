@@ -12,6 +12,7 @@ export const searchRouter = createTRPCRouter({
       }),
     )
     .query(async ({ input: { q, language } }) => {
+      if (language == "all") language = "";
       return await axios
         .get(
           `https://api.github.com/search/issues?q=${q}+label:%22good%20first%20issue%22+language:${language}+state:open&sort=interactions&order=desc`,

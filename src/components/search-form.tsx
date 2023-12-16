@@ -13,6 +13,7 @@ const Search = z.object({
 type SearchSchema = z.infer<typeof Search>;
 
 const languages = [
+  "all",
   "python",
   "javascript",
   "solidity",
@@ -47,10 +48,12 @@ const SearchForm = () => {
     <form onSubmit={onSubmit} className="mt-5 flex gap-2">
       <input
         className="w-6/12 rounded-md bg-gray-50 px-2 transition-all duration-200"
+        defaultValue={searchParams.get("q") ?? undefined}
         {...register("searchQuery")}
       />
       <select
         className="w-5/12 rounded-md bg-gray-50 p-1 px-2"
+        defaultValue={searchParams.get("language") ?? undefined}
         {...register("language")}
       >
         {languages.map((language) => {
