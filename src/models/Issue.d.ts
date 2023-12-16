@@ -7,6 +7,7 @@ interface Issue {
   created_at: string;
   updated_at: string;
   reactions: Reactions;
+  body: string;
 }
 
 interface Label {
