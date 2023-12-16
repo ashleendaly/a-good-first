@@ -9,8 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "A Good First",
-  description:
-    "An application to find new and manage open source contributions.",
+  description: "An application to find and manage open source contributions.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
