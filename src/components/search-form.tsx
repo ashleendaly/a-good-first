@@ -5,14 +5,7 @@ import { Search as SearchIcon } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { z } from "zod";
 
-const Search = z.object({
-  searchQuery: z.string(),
-  language: z.string(),
-});
-
-type SearchSchema = z.infer<typeof Search>;
-
-const languages = [
+const allowedLanguages = [
   "all",
   "python",
   "javascript",
@@ -27,14 +20,20 @@ const languages = [
   "php",
   "ruby",
   "scala",
-];
+] as const;
+
+const searchParamsSchema = z.object({
+  searchQuery: z.string().catch(""),
+  language: z.enum(allowedLanguages).catch(allowedLanguages[0]),
+});
 
 const SearchForm = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const { register, handleSubmit } = useForm<SearchSchema>();
+  const { register, handleSubmit } =
+    useForm<z.infer<typeof searchParamsSchema>>();
 
   const onSubmit = handleSubmit((data) => {
     const current = new URLSearchParams(Array.from(searchParams.entries()));
@@ -47,16 +46,16 @@ const SearchForm = () => {
   return (
     <form onSubmit={onSubmit} className="mt-5 flex gap-2">
       <input
-        className="w-6/12 rounded-md bg-gray-50 px-2 transition-all duration-200"
+        className="w-8/12 rounded-md bg-gray-50 px-2 transition-all duration-200"
         defaultValue={searchParams.get("q") ?? ""}
         {...register("searchQuery")}
       />
       <select
-        className="w-5/12 rounded-md bg-gray-50 p-1 px-2"
+        className="w-3/12 rounded-md bg-gray-50 p-1 px-2"
         defaultValue={searchParams.get("language") ?? "all"}
         {...register("language")}
       >
-        {languages.map((language) => {
+        {allowedLanguages.map((language) => {
           return (
             <option key={language} value={language}>
               {language}
