@@ -14,9 +14,9 @@ const IssueCard: FunctionComponent<IssueCardProps> = ({ issue }) => {
       href={issue.html_url}
     >
       <div className="flex w-4/5 flex-col gap-2">
-        <div className="flex items-center gap-4">
-          <div>{issue.title}</div>
+        <div className=" flex flex-col gap-1">
           <div className="text-sm">{issue.repository_url.split("/")[4]}</div>
+          <div>{issue.title}</div>
         </div>
         <span className="text-sm">{issue.body?.slice(0, 200)}...</span>
         <div className="flex gap-2 rounded-md text-xs">
