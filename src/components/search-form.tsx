@@ -49,7 +49,7 @@ const SearchForm = () => {
         className="w-8/12 rounded-md bg-gray-50 px-2 transition-all duration-200"
         placeholder="search a topic or organisation..."
         defaultValue={searchParams.get("q") ?? ""}
-        {...(register("searchQuery"), { required: true })}
+        {...register("searchQuery")}
       />
       <select
         className="w-3/12 rounded-md bg-gray-50 p-1 px-2"
