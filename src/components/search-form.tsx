@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { Search as SearchIcon, Eraser } from "lucide-react";
+import { Search as SearchIcon } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { z } from "zod";
 
@@ -65,12 +65,6 @@ const SearchForm = () => {
         })}
       </select>
 
-      <button
-        onClick={() => router.replace("/")}
-        className="grid place-items-center rounded-md border bg-red-500 p-2 px-4 text-white transition-colors duration-200 hover:bg-red-700"
-      >
-        <Eraser />
-      </button>
       <button className="grid w-1/12 place-items-center rounded-md border bg-blue-500 p-2 text-white transition-colors duration-200 hover:bg-blue-700">
         <SearchIcon />
       </button>
