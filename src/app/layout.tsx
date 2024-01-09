@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { Roboto_Mono } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
+import Header from "~/components/header";
 
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 
@@ -23,7 +24,10 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={robotoMono.className}>
-          <TRPCReactProvider headers={headers()}>{children}</TRPCReactProvider>
+          <TRPCReactProvider headers={headers()}>
+            <Header />
+            {children}
+          </TRPCReactProvider>
         </body>
       </html>
     </ClerkProvider>
