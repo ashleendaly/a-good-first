@@ -1,3 +1,4 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import "~/styles/globals.css";
 
 import { headers } from "next/headers";
@@ -19,10 +20,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={robotoMono.className}>
-        <TRPCReactProvider headers={headers()}>{children}</TRPCReactProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={robotoMono.className}>
+          <TRPCReactProvider headers={headers()}>{children}</TRPCReactProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
