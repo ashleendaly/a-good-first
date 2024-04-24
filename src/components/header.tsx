@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+// import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   return (
@@ -6,14 +6,12 @@ export default function Header() {
       style={{ display: "flex", justifyContent: "space-between", padding: 20 }}
     >
       <h1>A Good First</h1>
-      <SignedIn>
-        {/* Mount the UserButton component */}
+      {/* <SignedIn>
         <UserButton />
       </SignedIn>
       <SignedOut>
-        {/* Signed out users get sign in button */}
         <SignInButton />
-      </SignedOut>
+      </SignedOut> */}
     </header>
   );
 }
