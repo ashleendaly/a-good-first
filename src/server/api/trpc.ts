@@ -24,7 +24,7 @@ import { db } from "~/server/db";
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = (opts: { headers: Headers }) => {
+export const createTRPCContext = async (opts: { headers: Headers }) => {
   return {
     db,
     ...opts,
@@ -51,6 +51,13 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
     };
   },
 });
+
+/**
+ * Create a server-side caller.
+ *
+ * @see https://trpc.io/docs/server/server-side-calls
+ */
+export const createCallerFactory = t.createCallerFactory;
 
 /**
  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)
